@@ -8,10 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <AppBar />
-
-        <header className="App-header">
         
-        </header>
       </div>
     );
   }
