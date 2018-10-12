@@ -5,10 +5,12 @@
 # http://ip:port/end/points
 
 from flask import Flask
+
 from flask import render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
 import pymysql as MySQLdb
+
 
 app = Flask(__name__)
 
@@ -91,6 +93,7 @@ def generateResume(pwid=None):
     return
     #turn on tv
 
+
 # API for adding user profile
 @app.route('/survey')
 @app.route('/survey/<pwid>', methods=['POST', 'GET'])
@@ -102,14 +105,9 @@ def survey(pwid=None):
 
 
 
-
-
-
-
-
 @app.route('/index')
 def index():
     return "Hello World!"
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')
