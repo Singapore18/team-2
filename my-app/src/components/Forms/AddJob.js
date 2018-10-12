@@ -37,8 +37,59 @@ const styles = (theme) => ({
             marginBottom: theme.spacing.unit * 6,
             padding: theme.spacing.unit * 3,
         },
-    }
+    },
+    menu: {
+        width: 200,
+    },
 });
+
+const industries = [
+    {
+        value: 'hotel',
+        label: 'Hotel',
+    },
+    {
+        value: 'food_and_beverage',
+        label: 'Food & Beverage',
+    },
+];
+
+const skills = [
+    {
+        value: 'carpentry',
+        label: 'Carpentry',
+    },
+    {
+        value: 'administrative',
+        label: 'Administrative',
+    },
+];
+
+const workinghours = [
+    {
+        value: 'morning_shift',
+        label: 'Morning Shift',
+    },
+    {
+        value: 'afternoon_shift',
+        label: 'Afternoon Shift',
+    },
+    {
+        value: 'full_shift',
+        label: 'Full Shift',
+    },
+];
+
+const days = [
+    {
+        value: 'weekdays',
+        label: 'Weekdays',
+    },
+    {
+        value: 'weekends',
+        label: 'Weekends',
+    },
+];
 
 class AddJob extends Component {
     constructor() {
@@ -65,42 +116,189 @@ class AddJob extends Component {
                     </Typography>
                     <form className={classes.container} noValidate autoComplete="off">
                         <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <TextField
-                                required
-                                id="company_name"
-                                name="company_name"
-                                label="Company Name"
-                                fullWidth
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                required
-                                id="address"
-                                name="address"
-                                label="Address"
-                                fullWidth
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                required
-                                id="region"
-                                name="region"
-                                label="Region"
-                                fullWidth
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                required
-                                id="region"
-                                name="region"
-                                label="Region"
-                                fullWidth
-                            />
-                        </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    id="company_name"
+                                    name="company_name"
+                                    label="Company Name"
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    id="address"
+                                    name="address"
+                                    label="Address"
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    id="region"
+                                    name="region"
+                                    label="Region"
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="industry"
+                                    select
+                                    label="Industry"
+                                    // onChange={}
+                                    SelectProps={{
+                                        MenuProps: {
+                                            className: classes.menu,
+                                        },
+                                    }}
+                                    fullWidth
+                                >
+                                    {industries.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="skills1"
+                                    select
+                                    label="Skills 1"
+                                    // onChange={}
+                                    SelectProps={{
+                                        MenuProps: {
+                                            className: classes.menu,
+                                        },
+                                    }}
+                                    fullWidth
+                                >
+                                    {skills.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="skills2"
+                                    select
+                                    label="Skills 2"
+                                    // onChange={}
+                                    SelectProps={{
+                                        MenuProps: {
+                                            className: classes.menu,
+                                        },
+                                    }}
+                                    fullWidth
+                                >
+                                    {skills.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="skills3"
+                                    select
+                                    label="Skills 3"
+                                    // onChange={}
+                                    SelectProps={{
+                                        MenuProps: {
+                                            className: classes.menu,
+                                        },
+                                    }}
+                                    fullWidth
+                                >
+                                    {skills.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    id="description"
+                                    name="description"
+                                    label="Description"
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    id="working_hours"
+                                    select
+                                    label="Working Hours"
+                                    // onChange={}
+                                    SelectProps={{
+                                        MenuProps: {
+                                            className: classes.menu,
+                                        },
+                                    }}
+                                    fullWidth
+                                >
+                                    {workinghours.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    id="days"
+                                    select
+                                    label="Days"
+                                    // onChange={}
+                                    SelectProps={{
+                                        MenuProps: {
+                                            className: classes.menu,
+                                        },
+                                    }}
+                                    fullWidth
+                                >
+                                    {days.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    id="contact_name"
+                                    name="contact_name"
+                                    label="Contact Name"
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    id="phone"
+                                    name="phone"
+                                    label="Contact Number"
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    id="contact_email"
+                                    name="contact_email"
+                                    label="Contact Email"
+                                    fullWidth
+                                />
+                            </Grid>
                         </Grid>
                     </form>
                 </Paper>
