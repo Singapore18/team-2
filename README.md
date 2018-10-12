@@ -1,2 +1,9 @@
 "# team-2" 
-https://t.me/joinchat/BAfDwk1cz0yc3IFFOZ8RJA
+
+pip install flask
+
+# to run
+# go to directory that this file is in
+# ifconfig | grep inet to find device ip
+# python3 app.py
+# http://ip:port/end/points
