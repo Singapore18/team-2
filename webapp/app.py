@@ -55,7 +55,6 @@ class job(db.Model):
     is_full_time = db.Column(db.Boolean, unique=False, nullable=True)
     is_part_time = db.Column(db.Boolean, unique=False, nullable=True)
 
-db.create_all()
 
 ############## ROUTES ###########
 
