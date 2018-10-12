@@ -1,8 +1,8 @@
 export default {
     employer: {
-        addJob: process.env.REACT_APP_HOSTNAME + "",
+        addJob: "localhost:5000/addjob",
     },
     coach: {
-        addPwid: process.env.REACT_APP_HOSTNAME + "",
+        addPwid: "localhost:5000/addpwid",
     }
 }

@@ -40,40 +40,31 @@ const styles = (theme) => ({
 class ResumeTemplate extends Component {
 
     render() {
-        const { classes } = this.props;
-        const name = "Jason";
-        const interest1 = "shopping";
-        const interest2 = "listening to music";
-        const interest3 = "spending time with family";
+        const { classes, fullname, interest1, interest2, interest3, skill1, skill2, skill3 } = this.props;
+        // const name = "Jason";
+        // const interest1 = "shopping";
+        // const interest2 = "listening to music";
+        // const interest3 = "spending time with family";
 
 
         return (
             <div className={classes.layout} >
                 <Paper className={classes.paper}>
                     <Typography component="h2" variant="display2" align="center" style={{ color: '#6969B3' }} gutterBottom >
-                        Hello, my name is {name}.
+                        Hello, my name is {fullname}.
                     </Typography>
                     <br></br>
                     <Typography component="h2" variant="headline" align="center" style={{ color: '#000' }} gutterBottom >
                         My personal interests: 
                     </Typography>
                     <Typography component="h2" variant="display1" align="center" style={{ color: '#FE5F55' }} gutterBottom >
-                        I love <ShoppingBasket /> shopping <ShoppingBasket /> .
+                        I love <ShoppingBasket /> {interest1} <ShoppingBasket />, {interest2} and {interest3} .
                     </Typography>
                     <br></br><br></br>
                     <Typography component="h2" variant="headline" align="center" style={{ color: '#000' }} gutterBottom >
-                        My skills are: 
+                        My skills are: {this.props.skill1}, {this.props.skill2}
                     </Typography>
-                    <Typography component="h2" variant="display1" align="center" style={{ color: '#44A1A0' }} gutterBottom >
-                        I know how to do <AllInbox /> administrative <AllInbox />.
-                    </Typography>
-                    <br></br><br></br>
-                    <Typography component="h2" variant="headline" align="center" style={{ color: '#000' }} gutterBottom >
-                        My interests are: 
-                    </Typography>
-                    <Typography component="h2" variant="display1" align="center" style={{ color: '#C589E8' }} gutterBottom >
-                        I am interested in <TagFaces /> Hotel <TagFaces />.
-                    </Typography>
+                    
                     <br></br><br></br>
                     <Typography component="h2" variant="headline" align="center" style={{ color: '#000' }} gutterBottom >
                     Please give me simple and clear instructions, encouragement and guidance. I may be slow in the beginning but with time, let me show you my capabilities!

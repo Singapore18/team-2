@@ -2,7 +2,7 @@ import * as axios from 'axios';
 import api from './api';
 
 export function addJob(company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail){
-    
+    console.log(api.employer.addJob)
     axios({
         method: 'post',
         url: api.employer.addJob,

@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {addPwid} from '../../services';
+import ResumeTemplate from '../ResumeTemplate';
 
 const styles = (theme) => ({
     container: {
@@ -54,6 +55,10 @@ const industries = [
         value: 'food_and_beverage',
         label: 'Food & Beverage',
     },
+    {
+        value: 'shopping',
+        label: 'Shopping',
+    }
 ];
 
 const skills = [
@@ -65,6 +70,18 @@ const skills = [
         value: 'administrative',
         label: 'Administrative',
     },
+    {
+        value: 'cleaning',
+        label: 'Cleaning',
+    },
+    {
+        value: 'cooking',
+        label: 'Cooking',
+    },
+    {
+        value: 'Customer Service',
+        label: 'Customer Service',
+    }
 ];
 
 const jobtype = [
@@ -123,7 +140,7 @@ class AddJob extends Component {
     constructor() {
         super();
         this.state = {
-            company_name: "",
+            fullname: "",
             address: "",
             region: "",
             industry: "",
@@ -141,6 +158,8 @@ class AddJob extends Component {
             contactname: "",
             contactphone: "",
             contactemail: "",
+            resume: false,
+            form: true,
         }
     }
 
@@ -154,7 +173,11 @@ class AddJob extends Component {
 
     onSubmit = () => {
         const { company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail} = this.state;
-        addPwid(company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail);
+        this.setState({
+            resume: true,
+            form: false,
+          });
+        //addPwid(company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail);
     }
 
     render() {
@@ -162,7 +185,9 @@ class AddJob extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.layout}>
-                <Paper className={classes.paper}>
+                {
+                    this.state.form ? 
+                    <Paper className={classes.paper}>
                     <Typography variant="h6" gutterBottom>
                         Add Person with Intellectual Disabilities
                     </Typography>
@@ -172,10 +197,10 @@ class AddJob extends Component {
                                 <TextField
                                     required
                                     id="full_name"
-                                    name="full_name"
+                                    name="fullname"
                                     label="Full Name"
                                     fullWidth
-                                    onChange={this.handleChange('full_name')}
+                                    onChange={this.handleChange('fullname')}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -222,28 +247,7 @@ class AddJob extends Component {
                                     ))}
                                 </TextField>
                             </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="skills3"
-                                    name="skill3"
-                                    select
-                                    label="Skills 3"
-                                    onChange={this.handleChange('skill3')}
-                                    SelectProps={{
-                                        MenuProps: {
-                                            className: classes.menu,
-                                        },
-                                    }}
-                                    fullWidth
-                                    value={this.state.skill3}
-                                >
-                                    {skills.map(option => (
-                                        <MenuItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
-                            </Grid>
+                            
                             <Grid item xs={12}>
                                 <TextField
                                     id="interest1"
@@ -259,7 +263,7 @@ class AddJob extends Component {
                                     fullWidth
                                     value={this.state.interest1}
                                 >
-                                    {skills.map(option => (
+                                    {industries.map(option => (
                                         <MenuItem key={option.value} value={option.value}>
                                             {option.label}
                                         </MenuItem>
@@ -279,9 +283,9 @@ class AddJob extends Component {
                                         },
                                     }}
                                     fullWidth
-                                    value={this.state.skill2}
+                                    value={this.state.interest2}
                                 >
-                                    {skills.map(option => (
+                                    {industries.map(option => (
                                         <MenuItem key={option.value} value={option.value}>
                                             {option.label}
                                         </MenuItem>
@@ -303,7 +307,7 @@ class AddJob extends Component {
                                     fullWidth
                                     value={this.state.interest3}
                                 >
-                                    {skills.map(option => (
+                                    {industries.map(option => (
                                         <MenuItem key={option.value} value={option.value}>
                                             {option.label}
                                         </MenuItem>
@@ -354,10 +358,16 @@ class AddJob extends Component {
                             </Grid>
                         </Grid>
                         <Button variant="contained" color="primary" className={classes.button} onClick={this.onSubmit}>
-                            Submit
+                            Generate Resume
                         </Button>
+                        
                     </form>
                 </Paper>
+                :
+                ""    
+                }
+                
+                {this.state.resume ? <ResumeTemplate fullname={this.state.fullname} skill1={this.state.skill1} skill2={this.state.skill2} interest1={this.state.interest1} interest2={this.state.interest2} interest3={this.state.interest3}/> : ""}
             </div >
         );
     }

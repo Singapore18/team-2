@@ -149,9 +149,10 @@ class AddJob extends Component {
         });
       };
 
-    onSubmit = (e) => {
+    onSubmit = () => {
         const { company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail} = this.state;
-        addJob(company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail);
+        
+        //addJob(company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail);
     }
 
     render() {
