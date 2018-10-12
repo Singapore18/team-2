@@ -6,6 +6,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import AddJob from './components/Forms/AddJob';
 import AddPwid from './components/Forms/AddPwid';
 import ResumeTemplate from './components/ResumeTemplate';
+import JobSearches from './components/JobSearches';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route path="/addjob" component={AddJob} />
           <Route path="/addpwid" component={AddPwid} />
           <Route path="/resumetemplate" component={ResumeTemplate} />
+          <Route path="/jobsearches" component={JobSearches} />
         </Switch>
       </BrowserRouter>
       </div>
