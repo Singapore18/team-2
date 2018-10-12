@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import {addJob} from '../../services';
+import {addPwid} from '../../services';
 
 const styles = (theme) => ({
     container: {
@@ -67,6 +67,17 @@ const skills = [
     },
 ];
 
+const jobtype = [
+    {
+        value: 'fulltime',
+        label: 'Full time',
+    },
+    {
+        value: 'parttime',
+        label: 'Part time',
+    },
+];
+
 const starthours = [
     {
         value: '9:00am',
@@ -108,17 +119,6 @@ const days = [
     },
 ];
 
-const jobtype = [
-    {
-        value: 'fulltime',
-        label: 'Full time',
-    },
-    {
-        value: 'parttime',
-        label: 'Part time',
-    },
-];
-
 class AddJob extends Component {
     constructor() {
         super();
@@ -131,6 +131,9 @@ class AddJob extends Component {
             skill1: "",
             skill2: "",
             skill3: "",
+            interest1: "",
+            interest2: "",
+            interest3: "",
             description: "",
             days: "",
             startHour: "",
@@ -149,9 +152,9 @@ class AddJob extends Component {
         });
       };
 
-    onSubmit = (e) => {
+    onSubmit = () => {
         const { company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail} = this.state;
-        addJob(company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail);
+        addPwid(company_name, address, region, industry, jobTitle, skill1, skill2, skill3, description, days, startHour, endHour, contactname, contactphone, contactemail);
     }
 
     render() {
@@ -161,61 +164,19 @@ class AddJob extends Component {
             <div className={classes.layout}>
                 <Paper className={classes.paper}>
                     <Typography variant="h6" gutterBottom>
-                        Add Job
+                        Add Person with Intellectual Disabilities
                     </Typography>
                     <form className={classes.container} noValidate autoComplete="off">
                         <Grid container spacing={24}>
                             <Grid item xs={12}>
                                 <TextField
                                     required
-                                    id="company_name"
-                                    name="company_name"
-                                    label="Company Name"
+                                    id="full_name"
+                                    name="full_name"
+                                    label="Full Name"
                                     fullWidth
-                                    onChange={this.handleChange('company_name')}
+                                    onChange={this.handleChange('full_name')}
                                 />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    id="address"
-                                    name="address"
-                                    label="Address"
-                                    fullWidth
-                                    onChange={this.handleChange('address')}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    id="region"
-                                    name="region"
-                                    label="Region"
-                                    fullWidth
-                                    onChange={this.handleChange('region')}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="industry"
-                                    name="industry"
-                                    select
-                                    label="Industry"
-                                    onChange={this.handleChange('industry')}
-                                    SelectProps={{
-                                        MenuProps: {
-                                            className: classes.menu,
-                                        },
-                                    }}
-                                    fullWidth
-                                    value={this.state.industry}
-                                >
-                                    {industries.map(option => (
-                                        <MenuItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
@@ -285,86 +246,96 @@ class AddJob extends Component {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
-                                    required
-                                    id="description"
-                                    name="description"
-                                    label="Description"
+                                    id="interest1"
+                                    select
+                                    name="interest1"
+                                    label="Interest 1"
+                                    onChange={this.handleChange('interest1')}
+                                    SelectProps={{
+                                        MenuProps: {
+                                            className: classes.menu,
+                                        },
+                                    }}
                                     fullWidth
-                                    onChange={this.handleChange('description')}
+                                    value={this.state.interest1}
+                                >
+                                    {skills.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="interest2"
+                                    name="interest2"
+                                    select
+                                    label="Interest 2"
+                                    onChange={this.handleChange('interest2')}
+                                    SelectProps={{
+                                        MenuProps: {
+                                            className: classes.menu,
+                                        },
+                                    }}
+                                    fullWidth
+                                    value={this.state.skill2}
+                                >
+                                    {skills.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="interest3"
+                                    name="interest3"
+                                    select
+                                    label="Interest 3"
+                                    onChange={this.handleChange('interest3')}
+                                    SelectProps={{
+                                        MenuProps: {
+                                            className: classes.menu,
+                                        },
+                                    }}
+                                    fullWidth
+                                    value={this.state.interest3}
+                                >
+                                    {skills.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    id="address"
+                                    name="address"
+                                    label="Address"
+                                    fullWidth
+                                    onChange={this.handleChange('address')}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12}>
                                 <TextField
-                                    id="start_hours"
-                                    select
-                                    label="Start Hour"
-                                    name="startHour"
-                                    onChange={this.handleChange('startHour')}
-                                    SelectProps={{
-                                        MenuProps: {
-                                            className: classes.menu,
-                                        },
-                                    }}
+                                    required
+                                    id="region"
+                                    name="region"
+                                    label="Preferred Work Region"
                                     fullWidth
-                                    value={this.state.startHour}
-                                >
-                                    {starthours.map(option => (
-                                        <MenuItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
+                                    onChange={this.handleChange('region')}
+                                />
                             </Grid>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12}>
                                 <TextField
-                                    id="end_hours"
-                                    select
-                                    label="End Hour"
-                                    name="endHour"
-                                    onChange={this.handleChange('endHour')}
-                                    SelectProps={{
-                                        MenuProps: {
-                                            className: classes.menu,
-                                        },
-                                    }}
-                                    fullWidth
-                                    value={this.state.endHour}
-                                >
-                                    {endhours.map(option => (
-                                        <MenuItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    id="days"
-                                    select
-                                    label="Days"
-                                    name="days"
-                                    onChange={this.handleChange('days')}
-                                    SelectProps={{
-                                        MenuProps: {
-                                            className: classes.menu,
-                                        },
-                                    }}
-                                    fullWidth
-                                    value={this.state.days}
-                                >
-                                    {days.map(option => (
-                                        <MenuItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    id="isfulltime"
+                                    id="isFullTime"
+                                    name="isFullTime"
                                     select
                                     label="Full time/part time"
-                                    name="isFullTime"
                                     onChange={this.handleChange('isFullTime')}
                                     SelectProps={{
                                         MenuProps: {
@@ -372,7 +343,7 @@ class AddJob extends Component {
                                         },
                                     }}
                                     fullWidth
-                                    value={this.state.days}
+                                    value={this.state.skill2}
                                 >
                                     {jobtype.map(option => (
                                         <MenuItem key={option.value} value={option.value}>
@@ -380,36 +351,6 @@ class AddJob extends Component {
                                         </MenuItem>
                                     ))}
                                 </TextField>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    id="contact_name"
-                                    name="contactname"
-                                    label="Contact Name"
-                                    fullWidth
-                                    onChange={this.handleChange('contact_name')}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    id="phone"
-                                    name="contactphone"
-                                    label="Contact Number"
-                                    fullWidth
-                                    onChange={this.handleChange('contact_number')}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    id="contact_email"
-                                    name="contactemail"
-                                    label="Contact Email"
-                                    fullWidth
-                                    onChange={this.handleChange('contact_email')}
-                                />
                             </Grid>
                         </Grid>
                         <Button variant="contained" color="primary" className={classes.button} onClick={this.onSubmit}>

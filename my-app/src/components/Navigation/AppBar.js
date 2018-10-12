@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-
 import Button from '@material-ui/core/Button';
 
 
@@ -29,7 +28,8 @@ class DenseAppBar extends Component {
             <Typography variant="h6" color="inherit" >
               Minds Job Portal
           </Typography>
-          <Button color="inherit">Add Job</Button>
+            <Button color="inherit" href="/addjob">Add Job</Button>
+            <Button color="inherit" href="/addpwid">Add PWID</Button>
           </Toolbar>
         </AppBar>
       </div>
