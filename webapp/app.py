@@ -5,7 +5,7 @@
 # http://ip:port/end/points
 
 from flask import Flask
-from flask import render_template
+from flask import render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -19,9 +19,15 @@ def doservice(pwid=None):
     return render_template('resume.html',service=service)
     #turn on tv
 
+@app.route('/addjob', methods=['POST','GET'])
+def generateResume():
+    req_data = request.get_json()
+    print(req_data)
+    return
+
 @app.route('/index')
 def index():
     return "Hello World!"
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')
