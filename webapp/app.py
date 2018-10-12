@@ -65,7 +65,7 @@ def hello():
 
 # API for adding job
 @app.route('/addjob', methods=['POST', 'GET'])
-def generateResume():
+def addJob():
     req_data = request.get_json()
 
     from app import job
