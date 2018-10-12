@@ -1,0 +1,23 @@
+{
+  "name": "team-2",
+  "version": "1.0.0",
+  "description": "\"# team-2\" \r https://t.me/joinchat/BAfDwk1cz0yc3IFFOZ8RJA",
+  "main": "index.js",
+  "dependencies": {
+    "create-react-app": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Singapore18/team-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Singapore18/team-2/issues"
+  },
+  "homepage": "https://github.com/Singapore18/team-2#readme"
+}
